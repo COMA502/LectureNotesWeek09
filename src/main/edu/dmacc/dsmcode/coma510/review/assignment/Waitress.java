@@ -2,7 +2,7 @@ package edu.dmacc.dsmcode.coma510.review.assignment;
 
 import java.util.Scanner;
 
-public class Waitress {
+public class Waitress implements Employee {
     private double total = 0;
 
     public Waitress() {
@@ -28,5 +28,10 @@ public class Waitress {
 
     public void printTotal() {
         System.out.printf("Your total is $%.2f\n", total);
+    }
+
+    @Override
+    public void printGreeting() {
+        System.out.println("I'll be your waitress today! Can I take your order?");
     }
 }

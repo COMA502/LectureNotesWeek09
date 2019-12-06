@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Manager {
+public class Manager implements Employee {
 
     public void addToMenu(Menu menu, Scanner userInput) throws FileNotFoundException {
         menu.showMenu();
@@ -34,5 +34,10 @@ public class Manager {
             userInput.next();//clear the input
             return getPriceFromUser(userInput);
         }
+    }
+
+    @Override
+    public void printGreeting() {
+        System.out.println("I'm the manager, how can I help?");
     }
 }

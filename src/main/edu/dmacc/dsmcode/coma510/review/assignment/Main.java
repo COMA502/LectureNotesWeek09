@@ -86,14 +86,36 @@ public class Main {
      * Your total is $4.00
      */
     public static void main(String[] args) throws FileNotFoundException {
+//        a. Create an instance of Deli and an instance of Bakery. On both of them call openRestaurant().
+//        b. Ask the user, "Would you like the bakery or deli?".
+//        c. Get the menu by using getMenu() on the restaurant that the user chose.
+//        d. Using the existing logic below, allow the customer to 'add'/'order' from the menu for 'breakfast'/dinner.
+//        e. If the user chose 'order' then call printGreeting() from the Waitress. Otherwise, call printGreeting() from
+//           the Manager for 'add'.
+//        f. Use the existing logic below to print total or add to the menu.
+
         Scanner userInput = new Scanner(System.in);
+
+        System.out.println("Would you like the bakery or deli?");
+        String restaurantChoice = userInput.next();
 
         System.out.print("\nDo you want to 'order' or 'add' to the menu? ");
         String operation = userInput.next();
 
         System.out.printf("Would you like 'breakfast' or 'dinner'? ");
         String meal = userInput.next();
-        Menu menu = new Menu(meal);
+
+        Bakery bakery = new Bakery("Greg's Bakery " + meal);
+        bakery.openRestaurant();
+        Deli deli = new Deli("Greg's Deli " + meal);
+        deli.openRestaurant();
+
+        Menu menu;
+        if(restaurantChoice.equals("bakery")) {
+            menu = bakery.getMenu();
+        } else {
+            menu = deli.getMenu();
+        }
 
         if (operation.equals("order")) {
             Waitress waitress = new Waitress();
